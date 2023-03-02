@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "fastapi-template"
+version = "0.1.0"
+description = ""
+authors = ["uicodee <uicodee@gmail.com>"]
+readme = "README.md"
+packages = [{include = "fastapi_template"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+sqlalchemy = "^2.0.4"
+fastapi = "^0.92.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
