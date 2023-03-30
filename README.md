@@ -1,2 +1,2 @@
-# fastapi_template
-Simple FastAPI template using DDD
+# FastAPI Template
+Simple FastAPI template using Domain Driven Hexagon
