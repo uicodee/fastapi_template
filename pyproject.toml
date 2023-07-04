@@ -12,6 +12,12 @@ fastapi = "^0.95.0"
 sqlalchemy = "^2.0.7"
 asyncpg = "^0.27.0"
 pydantic = {extras = ["dotenv"], version = "^1.10.7"}
+pytz = "^2023.3"
+python-jose = "^3.3.0"
+passlib = "^1.7.4"
+bcrypt = "^4.0.1"
+python-multipart = "^0.0.6"
+greenlet = "^2.0.2"
 
 
 [build-system]

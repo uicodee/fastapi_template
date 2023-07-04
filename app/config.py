@@ -2,11 +2,17 @@ from pydantic import BaseSettings
 
 
 class DB(BaseSettings):
+
     host: str
     port: int
     name: str
     user: str
     password: str
+
+
+class Api(BaseSettings):
+
+    secret: str
 
 
 class SettingsExtractor(BaseSettings):
@@ -16,6 +22,8 @@ class SettingsExtractor(BaseSettings):
     DB__USER: str
     DB__PASSWORD: str
 
+    API__SECRET: str
+
     class Config:
         env_file = ".env"
         env_file_encoding = "utf-8"
@@ -23,6 +31,7 @@ class SettingsExtractor(BaseSettings):
 
 class Settings(BaseSettings):
     db: DB
+    api: Api
 
 
 def load_config() -> Settings:
@@ -35,5 +44,8 @@ def load_config() -> Settings:
             name=settings.DB__NAME,
             user=settings.DB__USER,
             password=settings.DB__PASSWORD,
+        ),
+        api=Api(
+            secret=settings.API__SECRET
         )
     )
