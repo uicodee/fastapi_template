@@ -27,6 +27,7 @@ class UserDAO(BaseDAO[User]):
                 User
             )
         )
+        await self.session.commit()
         return dto.User.from_orm(result.scalar())
 
     async def get_user(
