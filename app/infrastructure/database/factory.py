@@ -15,7 +15,7 @@ def make_connection_string(settings: Settings) -> str:
 
 
 def create_pool(url: str) -> sessionmaker:
-    engine = create_async_engine(url, echo=True)
+    engine = create_async_engine(url, echo=False)
     return sessionmaker(
         bind=engine,
         expire_on_commit=False,
