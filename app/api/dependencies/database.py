@@ -1,6 +1,6 @@
 from sqlalchemy.orm import sessionmaker
 
-from app.infrastructure.database.dao import HolderDao
+from app.infrastructure.database import HolderDao
 
 
 def dao_provider():

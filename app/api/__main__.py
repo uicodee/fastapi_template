@@ -1,6 +1,6 @@
 import uvicorn as uvicorn
 from fastapi import FastAPI
-from starlette.middleware.cors import CORSMiddleware
+from fastapi.middleware.cors import CORSMiddleware
 
 from app.api import controllers, dependencies
 from app.config import load_config

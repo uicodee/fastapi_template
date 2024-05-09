@@ -1,7 +1,8 @@
-from sqlalchemy import insert, select
+from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app import dto
+from app.api import schems
 from app.infrastructure.database.dao.rdb import BaseDAO
 from app.infrastructure.database.models import User
 
@@ -12,23 +13,12 @@ class UserDAO(BaseDAO[User]):
 
     async def add_user(
             self,
-            firstname: str,
-            lastname: str,
-            email: str,
-            password: str
+            user: schems.User
     ) -> dto.User:
-        result = await self.session.execute(
-            insert(User).values(
-                firstname=firstname,
-                lastname=lastname,
-                email=email,
-                password=password
-            ).returning(
-                User
-            )
-        )
+        user = User(**user.dict())
+        self.session.add(user)
         await self.session.commit()
-        return dto.User.from_orm(result.scalar())
+        return dto.User.from_orm(user)
 
     async def get_user(
             self,

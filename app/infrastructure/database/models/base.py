@@ -18,7 +18,6 @@ class BaseModel(Base):
 
     id: Mapped[int] = mapped_column(
         BigInteger,
-        nullable=False,
         autoincrement=True,
         primary_key=True,
     )

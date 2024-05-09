@@ -5,6 +5,7 @@ from typing import (
     Generic
 )
 
+from pydantic import TypeAdapter
 from sqlalchemy import delete, func
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
@@ -27,7 +28,8 @@ class BaseDAO(Generic[Model]):
         self,
     ) -> List[Model]:
         result = await self.session.execute(select(self.model))
-        return result.scalars().all()
+        adapter = TypeAdapter(list[Model])
+        return adapter.validate_python(result.scalars().all())
 
     async def _get_by_id(
         self,
