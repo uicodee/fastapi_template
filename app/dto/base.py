@@ -1,14 +1,21 @@
 from datetime import datetime
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel as PydanticBaseModel, Field
 
 
 def serialize_time(value: datetime) -> str:
     return value.strftime('%d.%m.%Y %H:%M')
 
 
-class Base(BaseModel):
+class Base(PydanticBaseModel):
     id: int
+
+    class Config:
+        from_attributes = True
+        populate_by_name = True
+
+
+class BaseModel(Base):
     created_at: datetime = Field(alias="createdAt")
     updated_at: datetime = Field(alias="updatedAt")
 
@@ -16,6 +23,3 @@ class Base(BaseModel):
         json_encoders = {
             datetime: serialize_time
         }
-        orm_mode = True
-        allow_population_by_field_name = True
-
