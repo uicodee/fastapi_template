@@ -8,9 +8,9 @@ from app.config import Settings, load_config
 
 
 def setup(
-        app: FastAPI,
-        pool: sessionmaker,
-        settings: Settings,
+    app: FastAPI,
+    pool: sessionmaker,
+    settings: Settings,
 ):
     db_provider = DbProvider(pool=pool)
     auth_provider = AuthProvider(settings=settings)

@@ -1,9 +1,4 @@
-from typing import (
-    List,
-    TypeVar,
-    Type,
-    Generic
-)
+from typing import List, TypeVar, Type, Generic
 
 from pydantic import TypeAdapter
 from sqlalchemy import delete, func

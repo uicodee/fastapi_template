@@ -45,7 +45,5 @@ def load_config() -> Settings:
             user=settings.DB__USER,
             password=settings.DB__PASSWORD,
         ),
-        api=Api(
-            secret=settings.API__SECRET
-        )
+        api=Api(secret=settings.API__SECRET),
     )

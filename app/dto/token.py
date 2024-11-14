@@ -4,4 +4,4 @@ from pydantic import BaseModel
 class Token(BaseModel):
 
     access_token: str
-    type: str
+    refresh_token: str

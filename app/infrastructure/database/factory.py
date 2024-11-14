@@ -8,9 +8,11 @@ logger = logging.getLogger(__name__)
 
 
 def make_connection_string(settings: Settings) -> str:
-    url = f"postgresql+asyncpg://{settings.db.user}:{settings.db.password}" \
-          f"@{settings.db.host}/{settings.db.name}" \
-          f"?async_fallback=True"
+    url = (
+        f"postgresql+asyncpg://{settings.db.user}:{settings.db.password}"
+        f"@{settings.db.host}/{settings.db.name}"
+        f"?async_fallback=True"
+    )
     return url
 
 
